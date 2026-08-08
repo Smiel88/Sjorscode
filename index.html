@@ -45,16 +45,18 @@
       url("kat_matrix.webp"),
       url("matrix_tile.webp");
     background-size:
-      min(640px, 78vw) auto,
+      100vw auto,
       225px 150px;
     background-position:
-      center 4vh,
+      center top,
       center top;
     background-repeat:
       no-repeat,
       repeat;
     opacity: 0.92;
     filter: saturate(1.1) contrast(1);
+    mask-image: radial-gradient(ellipse 62% 55% at center 24%, black 55%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse 62% 55% at center 24%, black 55%, transparent 92%);
     z-index: -2;
   }
 
@@ -249,14 +251,6 @@
 
   @media (max-width: 640px){
     .wrap{ padding-top: 60vh; }
-    body::before{
-      background-size:
-        min(320px, 62vw) auto,
-        150px 100px;
-      background-position:
-        center 3vh,
-        center top;
-    }
   }
 
   @media (prefers-reduced-motion: reduce){
@@ -273,14 +267,13 @@
 
   <div class="listing">
     <a class="entry" href="https://home.sjorscode.nl" target="_blank" rel="noopener">
-      <span class="entry-perm">drwxr-xr-x</span>
       <span class="entry-name">home<span class="ext">/</span></span>
       <span class="entry-desc">Home Assistant</span>
       <span class="entry-arrow">→</span>
     </a>
   </div>
 
-  <footer>drwxr-xr-x&nbsp; sjorscode.nl <span>·</span> laatst bijgewerkt vandaag</footer>
+  <footer>sjorscode.nl <span>·</span> laatst bijgewerkt vandaag</footer>
 
 </div>
 
