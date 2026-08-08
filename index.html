@@ -274,9 +274,20 @@
 
   @media (min-width: 900px){
     body::before{
-      background-size: min(720px, 55vw) auto;
+      left: 50%;
+      right: auto;
+      width: min(720px, 55vw);
+      transform: translateX(-50%);
+      background-size: 100% auto;
       background-position: center 4vh;
     }
+    .rain-layer{
+      left: 50%;
+      right: auto;
+      width: min(720px, 55vw);
+      transform: translateX(-50%);
+    }
+    .wrap{ padding-top: 52vh; }
   }
 
   @media (prefers-reduced-motion: reduce){
