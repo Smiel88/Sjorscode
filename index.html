@@ -41,23 +41,42 @@
     position: absolute;
     inset: 0;
     min-height: 100%;
-    background-image:
-      url("kat_matrix.webp"),
-      url("matrix_tile.webp");
-    background-size:
-      100vw auto,
-      225px 150px;
-    background-position:
-      center top,
-      center top;
-    background-repeat:
-      no-repeat,
-      repeat;
+    background-image: url("kat_matrix.webp");
+    background-size: 100vw auto;
+    background-position: center top;
+    background-repeat: no-repeat;
     opacity: 0.92;
     filter: saturate(1.1) contrast(1);
-    mask-image: radial-gradient(ellipse 62% 55% at center 24%, black 55%, transparent 92%);
-    -webkit-mask-image: radial-gradient(ellipse 62% 55% at center 24%, black 55%, transparent 92%);
+    mask-image: radial-gradient(ellipse 62% 55% at center 24%, black 25%, transparent 92%);
+    -webkit-mask-image: radial-gradient(ellipse 62% 55% at center 24%, black 25%, transparent 92%);
+    z-index: -3;
+  }
+
+  /* animated matrix rain, visible only around the edges (inverse mask), cat stays untouched underneath */
+  .rain-layer{
+    content: "";
+    position: absolute;
+    inset: 0;
+    min-height: 100%;
+    background-image: url("matrix_tile.webp");
+    background-size: 225px 150px;
+    background-position: center top;
+    background-repeat: repeat;
+    opacity: 0.5;
+    mask-image: radial-gradient(ellipse 62% 55% at center 24%, transparent 25%, black 92%);
+    -webkit-mask-image: radial-gradient(ellipse 62% 55% at center 24%, transparent 25%, black 92%);
+    animation: rain-fall 7s linear infinite;
+    pointer-events: none;
     z-index: -2;
+  }
+
+  @keyframes rain-fall{
+    from{ background-position: center 0px; }
+    to{ background-position: center 150px; }
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .rain-layer{ animation: none; }
   }
 
   body::after{
@@ -253,6 +272,13 @@
     .wrap{ padding-top: 60vh; }
   }
 
+  @media (min-width: 900px){
+    body::before{
+      background-size: min(720px, 55vw) auto;
+      background-position: center 4vh;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce){
     .line, .section-label, .listing, footer{ animation: none; opacity: 1; }
     .cursor{ animation: none; }
@@ -261,6 +287,7 @@
 </head>
 <body>
 
+<div class="rain-layer"></div>
 <div class="wrap">
 
   <p class="section-label">// single Sjors of thruth</p>
